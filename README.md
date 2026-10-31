@@ -3,7 +3,7 @@
 Upload a drone, aerial or satellite image and get building, road and water masks back, with an overlay, a before/after slider and per-class coverage.
 
 - **Website:** Next.js (this folder)
-- **Model API:** FastAPI + ONNX on a Hugging Face Space (`hf-space/`)
+- **Model API:** a FastAPI + ONNX service on a Hugging Face Space (separate repo)
 
 ## Run it
 
@@ -19,11 +19,7 @@ Production: `npm run build && npm start`.
 
 ## Deploy
 
-**Model API (Hugging Face Space)**: upload the contents of `hf-space/` plus the three `.onnx` models in `hf-space/models/` (`buildings`, `roads`, `water`):
-
-```bash
-hf upload <user>/<space> hf-space . --repo-type=space
-```
+**Model API:** host it on a Hugging Face Space (Docker) exposing `POST /predict` and `GET /health`.
 
 **Website (Render)**: create a Web Service from this repo (it reads `render.yaml`) and set `HF_API_URL`.
 
@@ -44,6 +40,5 @@ Leave `HF_API_URL` unset and put the models in `models/` (`npm run export-models
 app/          pages and API routes
 components/   UI components
 lib/          segment.js (dispatch + local inference), remote.js (Space client), classes.js
-hf-space/     the model API deployed to Hugging Face
 scripts/      export_onnx.py
 ```

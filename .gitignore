@@ -3,7 +3,6 @@ node_modules
 # ~100 MB each: regenerate with `npm run export-models`, or track with Git LFS
 models/*.onnx
 *.onnx
-hf-space/models/
 __pycache__/
 .env.local
 .env
