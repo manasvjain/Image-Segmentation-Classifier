@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: geo-seg-web
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: HF_API_URL
+        value: https://ankitt6174-learning.hf.space
+      - key: NODE_VERSION
+        value: "20"
